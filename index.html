@@ -226,6 +226,10 @@ margin-top:20px;
 
 flex-wrap:wrap;
 
+opacity:0;
+
+transition:1s;
+
 }
 
 #noButton{
@@ -369,7 +373,7 @@ width:100%;
 
 </div>
 
-<div class="buttons">
+<div class="buttons" id="buttons">
 
     <button id="yesButton">
         💖 Sí, mi amor!
@@ -387,6 +391,7 @@ const loading = document.getElementById("loading");
 const container = document.getElementById("container");
 const message = document.getElementById("message");
 const question = document.getElementById("question");
+const buttons = document.getElementById("buttons");
 const button = document.getElementById("yesButton");  
 const noButton = document.getElementById("noButton");
   setTimeout(() => {
@@ -407,7 +412,7 @@ const noButton = document.getElementById("noButton");
         }, 1800);
 
         setTimeout(() => {
-            button.style.opacity = "1";
+            buttons.style.opacity = "1";
         }, 2600);
 
     }, 1000);
@@ -449,10 +454,21 @@ button.addEventListener("click", () => {
         }, i * 120);
 
     }
-
+});
 noButton.addEventListener("click", () => {
 
     alert("😂 Esa opción no está disponible.");
+
+});
+  noButton.addEventListener("touchstart", (e) => {
+
+    e.preventDefault();
+
+    const x = Math.random() * 150 - 75;
+    const y = Math.random() * 80 - 40;
+
+    noButton.style.transform =
+        `translate(${x}px, ${y}px)`;
 
 });
 
