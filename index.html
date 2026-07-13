@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>For Ellen ❤️</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+
+background:#fffaf5;
+
+font-family:'Poppins',sans-serif;
+
+height:100vh;
+
+overflow:hidden;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+color:#444;
+
+}
+
+#loading{
+
+position:absolute;
+
+width:100%;
+
+height:100%;
+
+background:#fffaf5;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+flex-direction:column;
+
+transition:1s;
+
+z-index:5;
+
+}
+
+.spinner{
+
+width:45px;
+
+height:45px;
+
+border-radius:50%;
+
+border:4px solid #e8d6d6;
+
+border-top:4px solid #d26b8b;
+
+animation:spin 1s linear infinite;
+
+margin-bottom:25px;
+
+}
+
+@keyframes spin{
+
+to{
+transform:rotate(360deg);
+}
+
+}
+
+#loading p{
+
+font-size:1.1rem;
+
+letter-spacing:1px;
+
+}
+
+.container{
+
+opacity:0;
+
+max-width:700px;
+
+text-align:center;
+
+padding:40px;
+
+transition:1.5s;
+
+}
+
+.heart{
+
+font-size:3rem;
+
+animation:heartbeat 2s infinite;
+
+margin-bottom:20px;
+
+}
+
+@keyframes heartbeat{
+
+0%{transform:scale(1);}
+20%{transform:scale(1.08);}
+40%{transform:scale(1);}
+60%{transform:scale(1.08);}
+100%{transform:scale(1);}
+
+}
+
+h1{
+
+font-family:'Playfair Display',serif;
+
+font-size:3rem;
+
+margin-bottom:35px;
+
+color:#a94b69;
+
+}
+
+.message{
+
+font-size:1.15rem;
+
+line-height:2.1;
+
+opacity:0;
+
+transform:translateY(25px);
+
+transition:1s;
+
+}
+
+.question{
+
+font-family:'Playfair Display',serif;
+
+font-size:2.2rem;
+
+margin-top:45px;
+
+margin-bottom:40px;
+
+color:#b23b63;
+
+opacity:0;
+
+transition:1s;
+
+}
+
+button{
+
+opacity:0;
+
+padding:18px 50px;
+
+border:none;
+
+border-radius:50px;
+
+font-size:1.15rem;
+
+cursor:pointer;
+
+background:#d65a87;
+
+color:white;
+
+font-weight:600;
+
+transition:.35s;
+
+box-shadow:0 12px 35px rgba(214,90,135,.25);
+
+animation:pulse 2s infinite;
+
+}
+
+button:hover{
+
+transform:scale(1.05);
+
+background:#c94d7b;
+
+}
+
+@keyframes pulse{
+
+0%{transform:scale(1);}
+50%{transform:scale(1.04);}
+100%{transform:scale(1);}
+
+}
+
+.floating-heart{
+
+position:fixed;
+
+font-size:28px;
+
+animation:floatUp 4s linear forwards;
+
+pointer-events:none;
+
+}
+
+@keyframes floatUp{
+
+0%{
+
+opacity:0;
+
+transform:translateY(0) scale(.7);
+
+}
+
+15%{
+
+opacity:1;
+
+}
+
+100%{
+
+opacity:0;
+
+transform:translateY(-800px) scale(1.8);
+
+}
+
+}
+
+@media(max-width:700px){
+
+.container{
+
+padding:30px;
+
+}
+
+h1{
+
+font-size:2.4rem;
+
+}
+
+.question{
+
+font-size:1.8rem;
+
+}
+
+.message{
+
+font-size:1.05rem;
+
+}
+
+button{
+
+width:100%;
+
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div id="loading">
+
+<div class="spinner"></div>
+
+<p>Loading today's menu...</p>
+
+</div>
+
+<div class="container" id="container">
+
+  <div class="heart">❤️</div>
+
+<h1>For Ellen</h1>
+
+<div class="message" id="message">
+
+<p>Since I met you,</p>
+
+<br>
+
+<p>Every date with you has become my favourite memory.</p>
+
+<br>
+
+<p>You make me smile.</p>
+
+<br>
+
+<p>You make me feel calm.</p>
+
+<br>
+
+<p>And I would love to keep making memories together.</p>
+
+<br><br>
+
+<p><strong>So...</strong></p>
+
+</div>
+
+<div class="question" id="question">
+
+❤️ ¿Quieres ser mi novia?
+
+</div>
+
+<button id="yesButton">
+
+💖 Sí, mi amor!
+
+</button>
+
+</div>
+
+<script>
+
+const loading = document.getElementById("loading");
+const container = document.getElementById("container");
+const message = document.getElementById("message");
+const question = document.getElementById("question");
+const button = document.getElementById("yesButton");
+  setTimeout(() => {
+    loading.style.opacity = "0";
+
+    setTimeout(() => {
+        loading.style.display = "none";
+
+        container.style.opacity = "1";
+
+        setTimeout(() => {
+            message.style.opacity = "1";
+            message.style.transform = "translateY(0)";
+        }, 500);
+
+        setTimeout(() => {
+            question.style.opacity = "1";
+        }, 1800);
+
+        setTimeout(() => {
+            button.style.opacity = "1";
+        }, 2600);
+
+    }, 1000);
+
+}, 2000);
+
+button.addEventListener("click", () => {
+
+    // Confetti
+    confetti({
+        particleCount: 180,
+        spread: 90,
+        origin: { y: 0.6 }
+    });
+
+    // Floating hearts
+    for (let i = 0; i < 40; i++) {
+
+        setTimeout(() => {
+
+            const heart = document.createElement("div");
+
+            heart.className = "floating-heart";
+
+            heart.innerHTML = Math.random() > 0.5 ? "❤️" : "💖";
+
+            heart.style.left = Math.random() * 100 + "vw";
+
+            heart.style.bottom = "-30px";
+
+            heart.style.fontSize = (20 + Math.random() * 30) + "px";
+
+            document.body.appendChild(heart);
+
+            setTimeout(() => {
+                heart.remove();
+            }, 4000);
+
+        }, i * 120);
+
+    }
+
+});
+
+</script>
+
+</body>
+
+</html>
