@@ -189,7 +189,6 @@ display:block;
 
 margin:auto;
   
-opacity:0;
 
 padding:18px 50px;
 
@@ -380,7 +379,7 @@ width:100%;
     </button>
 
     <button id="noButton">
-        🙈 No (opción incorrecta 😂)
+        🙈 No
     </button>
 
 </div>
@@ -455,11 +454,7 @@ button.addEventListener("click", () => {
 
     }
 });
-noButton.addEventListener("click", () => {
-
-    alert("😂 Esa opción no está disponible.");
-
-});
+  noButton.addEventListener("mouseenter", moveNoButton);
   noButton.addEventListener("touchstart", (e) => {
 
     e.preventDefault();
