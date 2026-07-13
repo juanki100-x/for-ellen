@@ -214,7 +214,33 @@ box-shadow:0 12px 35px rgba(214,90,135,.25);
 animation:pulse 2s infinite;
 
 }
+.buttons{
 
+display:flex;
+
+justify-content:center;
+
+gap:20px;
+
+margin-top:20px;
+
+flex-wrap:wrap;
+
+}
+
+#noButton{
+
+background:#888;
+
+box-shadow:none;
+
+}
+
+#noButton:hover{
+
+background:#666;
+
+}
 button:hover{
 
 transform:scale(1.05);
@@ -319,9 +345,7 @@ width:100%;
 
 <div class="container" id="container">
 
-  <div class="heart">❤️</div>
-
-<h1>For Ellen</h1>
+<h1>For Ellen❤️</h1>
 
 <div class="message" id="message">
 
@@ -345,17 +369,15 @@ width:100%;
 
 </div>
 
-<button id="yesButton">
+<div class="buttons">
 
-💖 Sí, mi amor!
+    <button id="yesButton">
+        💖 Sí, mi amor!
+    </button>
 
-</button>
-
-<button id="noButton">
-
-No (opción incorrecta😂) 
-
-</button> 
+    <button id="noButton">
+        🙈 No (opción incorrecta 😂)
+    </button>
 
 </div>
 
@@ -365,8 +387,8 @@ const loading = document.getElementById("loading");
 const container = document.getElementById("container");
 const message = document.getElementById("message");
 const question = document.getElementById("question");
-const button = document.getElementById("yesButton");
-const button = document.getElementById("noButton");  
+const button = document.getElementById("yesButton");  
+const noButton = document.getElementById("noButton");
   setTimeout(() => {
     loading.style.opacity = "0";
 
@@ -427,6 +449,10 @@ button.addEventListener("click", () => {
         }, i * 120);
 
     }
+
+noButton.addEventListener("click", () => {
+
+    alert("😂 Esa opción no está disponible.");
 
 });
 
