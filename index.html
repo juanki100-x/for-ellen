@@ -454,23 +454,22 @@ button.addEventListener("click", () => {
 
     }
 });
-  noButton.addEventListener("mouseenter", moveNoButton);
-});
-
-  noButton.addEventListener("click", () => {
-
-    alert("😂 Esa opción no está disponible.");
-
-});  
-  noButton.addEventListener("touchstart", (e) => {
-
-    e.preventDefault();
+ // Ordenador
+function moveNoButton() {
 
     const x = Math.random() * 150 - 75;
     const y = Math.random() * 80 - 40;
 
-    noButton.style.transform =
-        `translate(${x}px, ${y}px)`;
+    noButton.style.transform = `translate(${x}px, ${y}px)`;
+
+}
+
+noButton.addEventListener("mouseenter", moveNoButton);
+
+// Móvil
+noButton.addEventListener("click", () => {
+
+    alert("😂 Nice try... Esa opción no está disponible.");
 
 });
 
